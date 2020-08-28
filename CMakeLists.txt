@@ -11,12 +11,12 @@ find_package(appfwk REQUIRED)
 ##############################################################################
 daq_point_build_to( src )
 
-add_library(dispatcherdemo_Packager_duneDAQModule src/Packager.cpp)
-target_link_libraries(dispatcherdemo_Packager_duneDAQModule appfwk::appfwk)
+add_library(dispatcherdemo_DataPackager_duneDAQModule src/DataPackager.cpp)
+target_link_libraries(dispatcherdemo_DataPackager_duneDAQModule appfwk::appfwk)
 
 ##############################################################################
-#daq_point_build_to( test )
+daq_point_build_to( test )
 
-#file(COPY test/list_reversal_app.json DESTINATION test)
+file(COPY test/data_packager_demo.json DESTINATION test)
 
-daq_install(TARGETS dispatcherdemo_Packager_duneDAQModule )
+daq_install(TARGETS dispatcherdemo_DataPackager_duneDAQModule )

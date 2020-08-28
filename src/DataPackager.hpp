@@ -1,51 +1,51 @@
 /**
- * @file Packager.hpp
+ * @file DataPackager.hpp
  *
- * Packager is a simple DAQModule implementation that
- * periodically generates a list of random integers.
+ * DataPackager is a simple DAQModule implementation that
+ * reads data fragments and writes them back out as a unit.
  *
  * This is part of the DUNE DAQ Software Suite, copyright 2020.
  * Licensing/copyright details are in the COPYING file that you should have
  * received with this code.
  */
 
-#ifndef DISPATCHERDEMO_SRC_PACKAGER_HPP_
-#define DISPATCHERDEMO_SRC_PACKAGER_HPP_
+#ifndef DISPATCHERDEMO_SRC_DATAPACKAGER_HPP_
+#define DISPATCHERDEMO_SRC_DATAPACKAGER_HPP_
 
 #include "appfwk/DAQModule.hpp"
-#include "appfwk/DAQSink.hpp"
+//#include "appfwk/DAQSink.hpp"
 #include "appfwk/ThreadHelper.hpp"
 
 #include <ers/Issue.h>
 
 #include <memory>
 #include <string>
-#include <vector>
+//#include <vector>
 
 namespace dunedaq {
 namespace dispatcherdemo {
 
 /**
- * @brief Packager creates vectors of ints and writes
- * them to the configured output queues.
+ * @brief DataPackager reads data in, packages it appropriately for
+ * transfer to offline, then writes it back out.
  */
-class Packager : public dunedaq::appfwk::DAQModule
+class DataPackager : public dunedaq::appfwk::DAQModule
 {
 public:
   /**
-   * @brief Packager Constructor
-   * @param name Instance name for this Packager instance
+   * @brief DataPackager Constructor
+   * @param name Instance name for this DataPackager instance
    */
-  explicit Packager(const std::string& name);
+  explicit DataPackager(const std::string& name);
 
-  Packager(const Packager&) =
-    delete; ///< Packager is not copy-constructible
-  Packager& operator=(const Packager&) =
-    delete; ///< Packager is not copy-assignable
-  Packager(Packager&&) =
-    delete; ///< Packager is not move-constructible
-  Packager& operator=(Packager&&) =
-    delete; ///< Packager is not move-assignable
+  DataPackager(const DataPackager&) =
+    delete; ///< DataPackager is not copy-constructible
+  DataPackager& operator=(const DataPackager&) =
+    delete; ///< DataPackager is not copy-assignable
+  DataPackager(DataPackager&&) =
+    delete; ///< DataPackager is not move-constructible
+  DataPackager& operator=(DataPackager&&) =
+    delete; ///< DataPackager is not move-assignable
 
   void init() override;
 
@@ -61,13 +61,13 @@ private:
   void do_work(std::atomic<bool>&);
 
   // Configuration defaults
-  const size_t REASONABLE_DEFAULT_INTSPERLIST = 4;
+  //const size_t REASONABLE_DEFAULT_INTSPERLIST = 4;
   const size_t REASONABLE_DEFAULT_MSECBETWEENSENDS = 1000;
 
   // Configuration
-  std::vector<std::unique_ptr<dunedaq::appfwk::DAQSink<std::vector<int>>>> outputQueues_;
-  std::chrono::milliseconds queueTimeout_;
-  size_t nIntsPerList_ = REASONABLE_DEFAULT_INTSPERLIST;
+  //std::vector<std::unique_ptr<dunedaq::appfwk::DAQSink<std::vector<int>>>> outputQueues_;
+  //std::chrono::milliseconds queueTimeout_;
+  //size_t nIntsPerList_ = REASONABLE_DEFAULT_INTSPERLIST;
   size_t waitBetweenSendsMsec_ = REASONABLE_DEFAULT_MSECBETWEENSENDS;
 };
 } // namespace dispatcherdemo
@@ -81,4 +81,4 @@ ERS_DECLARE_ISSUE_BASE(dispatcherdemo,
 
 } // namespace dunedaq
 
-#endif // DISPATCHERDEMO_SRC_PACKAGER_HPP_
+#endif // DISPATCHERDEMO_SRC_DATAPACKAGER_HPP_

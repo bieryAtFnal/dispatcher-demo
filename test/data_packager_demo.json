@@ -1,0 +1,13 @@
+{
+  "queues": {
+  },
+  "modules": {
+    "packager": {
+      "user_module_type": "DataPackager"
+    }
+  },
+  "commands": {
+    "start": [ "packager" ],
+    "stop": [ "packager" ]
+  }
+}
