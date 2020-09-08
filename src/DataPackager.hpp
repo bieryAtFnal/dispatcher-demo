@@ -12,6 +12,8 @@
 #ifndef DISPATCHERDEMO_SRC_DATAPACKAGER_HPP_
 #define DISPATCHERDEMO_SRC_DATAPACKAGER_HPP_
 
+#include "dispatcherdemo/StorageElement.hpp"
+
 #include "appfwk/DAQModule.hpp"
 //#include "appfwk/DAQSink.hpp"
 #include "appfwk/ThreadHelper.hpp"

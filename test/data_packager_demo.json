@@ -1,9 +1,16 @@
 {
   "queues": {
   },
+  #"data_stores": {
+  #},
   "modules": {
     "packager": {
-      "user_module_type": "DataPackager"
+      "user_module_type": "DataPackager",
+      "output_data_store": {
+        "data_store_type": "HDF5",
+        "directory_path": ".",
+        "filename_pattern": "demo_r%r.hdf5"
+      }
     }
   },
   "commands": {
